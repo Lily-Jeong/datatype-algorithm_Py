@@ -1,4 +1,4 @@
-import array as ArrayStack
+from StackClass import ArrayStack
 
 def checkBrackets(statement):
     stack = ArrayStack(100)

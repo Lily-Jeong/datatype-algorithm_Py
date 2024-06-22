@@ -24,7 +24,21 @@ class ArrayStack:
             return self.array[self.top]
         else: pass                          # underflow 예외는 처리하지 않았음
 
-    def size() : return top+1
+    def size(): return top+1
+
+    def clear(self):
+        self.top = -1
+
+    def display(self):
+        for i in range(0, self.top+1):
+            print(self.array[i], end='')
+        print()
+
+    def printReverse(msg, len):
+        if len > 0:
+            print(msg[len-1])
+            printReverse(msg, len-1)
+
 
 s = ArrayStack(100)
 

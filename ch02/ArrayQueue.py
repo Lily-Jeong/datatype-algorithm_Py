@@ -1,9 +1,6 @@
 #02-2
     #2.1a 클래스의 선언과 멤버 변수 초기화
 
-#2.2 원형 큐: 테스트 프로그램
-import random # 난수 발생 목적
-
 class ArrayQueue:
     def __init__(self, capacity = 10): #생성자 정의
         self.capacity = capacity #용량(고정)
@@ -58,8 +55,18 @@ class ArrayQueue:
             self.front = (self.front + 1) % self.capacity
             #삽입 후가 공백이면 오류 상태. 이 경우 front를 회전시켜 가장 오래된 요소를 삭제.
 
+    #practice Q2. 원형 큐 클래스에 큐를 공백 상태로 초기화하는 clear() 연산을 추가.
+    # def clear(self):
+    #     if not self.isEmpty():
+    #         self.array = [None]
+    #     else: pass
+    #해답
+    def clear(self):
+        self.front = 0
+        self.rear = 0
 
-
+#2.2 원형 큐: 테스트 프로그램
+# import random # 난수 발생 목적
 # q = ArrayQueue(8)
 # q.display("초기 상태")
 # while not q.isFull():

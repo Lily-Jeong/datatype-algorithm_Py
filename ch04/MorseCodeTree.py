@@ -1,3 +1,5 @@
+from BinaryTree import BTNode
+
 table = [
     ('A', '.-'), ('B', '-...'), ('C', '-.-.'), ('D', '-..'),
     ('E', '.'), ('F', '..-.'), ('G', '--.'), ('H', '....'),
@@ -20,3 +22,31 @@ def decode_simple(morse):
             return tp[0]    # 그 코드의 문자를 반환
     # => 표 크기(문자 수)가 n개라면 n 번 비교해야 함 -> 매우 비효율적인 방법!
 
+def make_morse_tree():
+    """ 모스 코드 디코딩을 위한 결정 트리 만들기 """
+    root = BTNode(None, None, None)
+    for tp in table:        # tp: 모스 코드 표의 각 항목
+        code = tp[1]        # tp[1]: 모스 코드
+        node = root         # 루트부터 탐색
+        for c in code:
+            if c == '.':
+                # 왼쪽 자식이 비었으면 빈 노드를 추가.
+                if node.left == None:
+                    node.left == BTNode(None, None, None)
+                node = node.left
+            elif c == '-':
+                # 왼쪽과 동일한 방법으로 오른쪽도 진행.
+                if node.right == None:
+                    node.right == BTNode(None, None, None)
+                node = node.right
+
+        node.data = tp[0]   # 최종 노드에 문자(tp[0]) 부여
+    return root
+
+def decode(root, code):
+    """ 결정 트리를 이용한 디코딩"""
+    node = root                             # 루트 노드에서 시작
+    for c in code:                          # 각 부호에 대해
+        if c == '.' : node = node.left      # 점(.): 왼쪽으로 이동
+        elif c == '-' : node = node.right   # 선(-): 오른쪽으로 이동
+    return node.data                        # 문자 반환

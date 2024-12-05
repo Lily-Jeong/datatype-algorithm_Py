@@ -3,6 +3,15 @@ sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
 from ch02.ArrayQueue import ArrayQueue
 
+
+class BTNode:
+    def __init__(self, elem, left=None, right=None):
+        """ 이진 트리를 위한 노드의 생성자 """
+        self.data = elem
+        self.left = left    # 왼쪽 자식을 위한 링크
+        self.right = right  # 오른쪽 자식을 위한 링크
+
+
 def preorder(n): # 이진트리의 전위순회 함수
     if n is not None:
         print(n.data, end=' ')  # <- 노드를 방문해 처리할 연산들이 이 자리에 위치. 이 예시에서는 단순 출력만 하는 걸로 설정.
@@ -49,13 +58,8 @@ def calc_height(n):
     else: return hRight + 1
 
 
-class BTNode:
-    def __init__(self, elem, left=None, right= None):
-        """ 이진 트리를 위한 노드의 생성자 """
-        self.data = elem
-        self.left = left    # 왼쪽 자식을 위한 링크
-        self.right = right  # 오른쪽 자식을 위한 링크
 
+# test program
 
 d = BTNode('D', None, None)
 e = BTNode('E', None, None)

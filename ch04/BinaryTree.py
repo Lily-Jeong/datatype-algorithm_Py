@@ -11,6 +11,9 @@ class BTNode:
         self.left = left    # 왼쪽 자식을 위한 링크
         self.right = right  # 오른쪽 자식을 위한 링크
 
+    def isLeaf(self):
+        return self.left is None and self.right is None
+
 
 def preorder(n): # 이진트리의 전위순회 함수
     if n is not None:
